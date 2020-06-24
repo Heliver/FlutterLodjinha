@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
       title: 'FlutterLodjinha',
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
+        primaryColor: Color.fromARGB(255, 94, 42, 132)
       ),
       debugShowCheckedModeBanner: false,
       home: HomeScreen(),
