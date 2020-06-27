@@ -13,3 +13,10 @@ Os commits tentam expressar um fluxo lógico e escolhas na construção do app. 
 ### # Fonts
 
 Foi adicionada a font Pacifico no projeto, como a Roboto é a fonte padrão do Material, não existe a necessidade de incluir no pubspec.yaml. O controle do peso está sendo feito diretamente no FontWeight.
+
+### # Setup
+
+1- Clonar o projeto: git clone https://github.com/Heliver/FlutterLodjinha.git
+2- Abrir o projeto no Vscode ou Android Studio.
+3- Baixar as dependências do pubspec.yaml
+

@@ -38,9 +38,15 @@ class CategoryScreen extends StatelessWidget {
               if (!snapshot.hasData) {
                 return SliverToBoxAdapter(
                   child: Container(
-                    height: MediaQuery.of(context).size.height,
-                    alignment: Alignment.center,
-                    color: Colors.white,
+                      height: MediaQuery.of(context).size.height,
+                      alignment: Alignment.center,
+                      color: Colors.white,
+                      child: Center(
+                        child: CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                              Theme.of(context).primaryColor),
+                        ),
+                      )
                   ),
                 );
               } else {
