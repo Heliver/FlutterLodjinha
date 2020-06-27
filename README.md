@@ -16,7 +16,7 @@ Foi adicionada a font Pacifico no projeto, como a Roboto é a fonte padrão do M
 
 ### # Setup
 
-1- Clonar o projeto: git clone https://github.com/Heliver/FlutterLodjinha.git
-2- Abrir o projeto no Vscode ou Android Studio.
-3- Baixar as dependências do pubspec.yaml
+1. Clonar o projeto: git clone https://github.com/Heliver/FlutterLodjinha.git
+2. Abrir o projeto no Vscode ou Android Studio.
+3. Baixar as dependências do pubspec.yaml
 
