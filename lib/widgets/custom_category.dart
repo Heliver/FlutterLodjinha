@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lodjinha/datas/category_data.dart';
+import 'package:lodjinha/screens/category_screen.dart';
 import 'package:lodjinha/services/category_service.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
+// ignore: must_be_immutable
 class CustomCategory extends StatelessWidget {
   var categoryService = CategoryService();
 
@@ -14,12 +16,8 @@ class CustomCategory extends StatelessWidget {
           if (!snapshot.hasData) {
             return SliverToBoxAdapter(
               child: Container(
-                height: 200.0,
-                alignment: Alignment.center,
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                      Theme.of(context).primaryColor),
-                ),
+                height: MediaQuery.of(context).size.height,
+                color: Colors.white,
               ),
             );
           } else {
@@ -43,40 +41,49 @@ class CustomCategory extends StatelessWidget {
                       padding: EdgeInsets.all(0.0),
                       height: 90,
                       child: Center(
-                          child: ListView(
-                            scrollDirection: Axis.horizontal,
-                            children: snapshot.data["data"].map<Center>((item) {
-                              CategoryData category = CategoryData(item);
-                              return Center(
-                                child: Column(
-                                  children: <Widget>[
-                                    Container(
-                                      padding: EdgeInsets.all(8.0),
-                                      child: CachedNetworkImage(
-                                        width: 50.0,
-                                        imageUrl: category.image,
-                                        errorWidget: (context, url, error) =>
-                                            Image.asset("images/not_found.png",
-                                                width: 50.0),
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: snapshot.data["data"].map<Center>((item) {
+                            CategoryData category = CategoryData(item);
+                            return Center(
+                              child: Column(
+                                children: <Widget>[
+                                  Material(
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => CategoryScreen(category)),
+                                        );
+                                      },
+                                      child: Container(
+                                        padding: EdgeInsets.all(8.0),
+                                        child: CachedNetworkImage(
+                                          width: 50.0,
+                                          imageUrl: category.image,
+                                          errorWidget: (context, url, error) =>
+                                              Image.asset("images/not_found.png",
+                                                  width: 50.0),
+                                        ),
                                       ),
                                     ),
-                                    Container(
-                                      width: 80.0,
-                                      alignment: Alignment.topCenter,
-                                      child: Text(
-                                        category.desc,
-                                        overflow: TextOverflow.ellipsis,
-                                        maxLines: 2,
-                                        style: TextStyle(fontSize: 10.0),
-                                      ),
+                                  ),
+                                  Container(
+                                    width: 80.0,
+                                    alignment: Alignment.topCenter,
+                                    child: Text(
+                                      category.desc,
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 1,
+                                      style: TextStyle(fontSize: 10.0),
                                     ),
-                                  ],
-                                ),
-                              );
-                            }).toList(),
-                          ),
-                      )
-                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                      )),
                 ],
               ),
             );

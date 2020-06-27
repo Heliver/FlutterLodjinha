@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lodjinha/screens/home_screen.dart';
+import 'package:lodjinha/screens/splash_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Color.fromARGB(255, 94, 42, 132)
       ),
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: SplashScreen(),
     );
   }
 }

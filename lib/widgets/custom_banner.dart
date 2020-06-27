@@ -4,6 +4,7 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:lodjinha/datas/banner_data.dart';
 import 'package:lodjinha/services/banner_service.dart';
 
+// ignore: must_be_immutable
 class CustomBanner extends StatelessWidget {
   final double _heigth;
   var bannerService = BannerService();
@@ -18,20 +19,23 @@ class CustomBanner extends StatelessWidget {
           if (!snapshot.hasData) {
             return SliverToBoxAdapter(
               child: Container(
-                height: 200.0,
-                alignment: Alignment.center,
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                      Theme.of(context).primaryColor),
-                ),
+                  height: MediaQuery.of(context).size.height,
+                  alignment: Alignment.center,
+                  color: Colors.white,
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                          Theme.of(context).primaryColor),
+                    ),
+                  )
               ),
             );
           } else {
             return SliverToBoxAdapter(
                 child: Container(
-                    margin: const EdgeInsets.all(0.0),
-                    height: _heigth,
+                    height:_heigth,
                     child: Carousel(
+                        boxFit: BoxFit.fill,
                         images: snapshot.data["data"].map((url) {
                           BannerData banner = BannerData(url);
                           return Image.network(
@@ -45,9 +49,9 @@ class CustomBanner extends StatelessWidget {
                         dotBgColor: Colors.transparent,
                         dotColor: Theme.of(context).primaryColor,
                         autoplay: true,
-                        autoplayDuration: Duration(seconds: 5),
+                        autoplayDuration: Duration(seconds: 3),
                     ),
-            ));
+                ));
           }
         });
   }
